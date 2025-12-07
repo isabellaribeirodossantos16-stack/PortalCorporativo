@@ -4,8 +4,11 @@ import react from '@vitejs/plugin-react';
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  // A configuração base: './' é fundamental para o GitHub Pages.
-  // Ela garante que o HTML busque o JS e CSS na mesma pasta relativa,
-  // e não na raiz absoluta do domínio.
-  base: './', 
+  // 'base: ./' garante caminhos relativos (evita tela branca)
+  base: './',
+  build: {
+    // Muda a pasta de saída de 'dist' para 'docs'
+    // Isso permite usar a opção "Deploy from a branch" -> "/docs" no GitHub
+    outDir: 'docs',
+  }
 });
